@@ -3,7 +3,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class MovieResponse {
+public class MoviesResponse {
     @SerializedName("page")
     private int page;
     @SerializedName("results")

@@ -7,7 +7,7 @@ import android.widget.Toast;
 
 import com.androidplayground.retrofit.R;
 import com.androidplayground.retrofit.model.Movie;
-import com.androidplayground.retrofit.model.MovieResponse;
+import com.androidplayground.retrofit.model.MoviesResponse;
 import com.androidplayground.retrofit.rest.ApiClient;
 import com.androidplayground.retrofit.rest.ApiInterface;
 
@@ -36,16 +36,16 @@ public class MainActivity extends AppCompatActivity {
         ApiInterface apiService =
                 ApiClient.getClient().create(ApiInterface.class);
 
-        Call<MovieResponse> call = apiService.getTopRatedMovies(API_KEY);
-        call.enqueue(new Callback<MovieResponse>() {
+        Call<MoviesResponse> call = apiService.getTopRatedMovies(API_KEY);
+        call.enqueue(new Callback<MoviesResponse>() {
             @Override
-            public void onResponse(Call<MovieResponse>call, Response<MovieResponse> response) {
+            public void onResponse(Call<MoviesResponse>call, Response<MoviesResponse> response) {
                 List<Movie> movies = response.body().getResults();
                 Log.d(TAG, "Number of movies received: " + movies.size());
             }
 
             @Override
-            public void onFailure(Call<MovieResponse>call, Throwable t) {
+            public void onFailure(Call<MoviesResponse>call, Throwable t) {
                 // Log error here since request failed
                 Log.e(TAG, t.toString());
             }
